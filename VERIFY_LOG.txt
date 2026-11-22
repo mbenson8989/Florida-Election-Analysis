@@ -1,0 +1,33 @@
+Florida governor 2022 vs 2026 - verification log, run 2026-11-22T09:44:44-06:00
+
+== PASS 1 (scripts/pass1_compute.py) vs PASS 2 (scripts/pass2_verify.py), separate parsers and partly separate source documents
+county count pass1=67 pass2=67 keys identical=True
+county-figure checks=2747 (67 counties x 41 fields); fit checks=18; mismatches=0
+
+== STATE TOTALS (county sums vs DOE-reported statewide totals)
+  OK  2022 Dem gov votes: county sum vs DOE DetailRpt Total: 3,106,313 vs 3,106,313
+  OK  2022 Rep gov votes: county sum vs DOE DetailRpt Total: 4,614,210 vs 4,614,210
+  OK  2022 all gov votes: county sum vs DOE DetailRpt Total: 7,771,399 vs 7,771,399
+  OK  2022 ballots cast: county sum vs DOE TurnoutRpt Total: 7,796,916 vs 7,796,916
+  OK  2022 Dem registration: county sum vs book-closing Total: 4,971,444 vs 4,971,444
+  OK  2022 total registration: county sum vs book-closing Total: 14,503,978 vs 14,503,978
+  OK  2022 total registration: book-closing vs TurnoutRpt Voter Reg Total: 14,503,978 vs 14,503,978
+  OK  2026 Dem gov votes: county sum vs Election Watch statewide: 4,030,579 vs 4,030,579
+  OK  2026 Rep gov votes: county sum vs Election Watch statewide: 4,135,955 vs 4,135,955
+  OK  2026 all gov votes: county sum vs Election Watch statewide Total: 8,271,627 vs 8,271,627
+  OK  2026 Dem gov votes: county sum vs Election Watch by-county Total row: 4,030,579 vs 4,030,579
+  OK  2026 all gov votes: county sum vs by-county Total row: 8,271,627 vs 8,271,627
+  OK  2026 ballots cast: county sum vs CountyReportingStatus TOTAL: 8,345,654 vs 8,345,654
+  OK  2026 Dem registration: county sum vs book-closing Total: 4,146,172 vs 4,146,172
+  OK  2026 total registration: county sum vs book-closing Total: 13,704,495 vs 13,704,495
+  OK  2026 total registration: book-closing vs CountyReportingStatus Eligible Active TOTAL: 13,704,495 vs 13,704,495
+
+== CROSS-SOURCE 2026 Election Watch ContestResultsByCounty HTML vs results tab file: 134 checks, differences 0 []
+== 2026 pipe Votes file governor record status codes: ['I'] (I = Incomplete per DOS layout)
+
+RESULT: CLEAN
+
+== OUTPUT CHECK vs PASS 2 values (scripts/verify_outputs.py), run 2026-11-22T09:44:50-06:00
+  PDF rows: table1 67, table2 67; CSV county rows 67; wiki Reverse-Math county rows 67; Locked rows 67
+  checks 4832; mismatches 0
+

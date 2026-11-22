@@ -1,0 +1,210 @@
+[
+ {
+  "file": "raw/20261103_ElecResultsFL.txt",
+  "url": "https://flelectionfiles.floridados.gov/enightfilespublic/20261103_ElecResultsFL.txt?v=52821560",
+  "downloaded": "2026-11-20T19:15:38-06:00",
+  "bytes": 365374,
+  "sha256": "6da5bdddd2f6dbd05e5f20b3a0f9e35dd64ef969401ed27ff3d4cc708035da90",
+  "notes": "2026 General results, all races, county, tab-delimited (linked from floridaelectionwatch.gov/Downloads). Pass 1 source for 2026 governor votes. Fetched with curl -k: server sends GoDaddy R1 root not in box CA bundle (chain inspected: *.floridados.gov <- GoDaddy TLS Intermediate CA DV - R1v1 <- GoDaddy TLS Root CA - R1)."
+ },
+ {
+  "file": "raw/20261103_ElecResultsFL.xls",
+  "url": "https://flelectionfiles.floridados.gov/enightfilespublic/20261103_ElecResultsFL.xls?v=52821560",
+  "downloaded": "2026-11-20T19:15:38-06:00",
+  "bytes": 365374,
+  "sha256": "6da5bdddd2f6dbd05e5f20b3a0f9e35dd64ef969401ed27ff3d4cc708035da90",
+  "notes": "Byte-identical to the .txt (same md5); kept for completeness, not used."
+ },
+ {
+  "file": "raw/20261103_ElecResultsFL_PipeDlm_Info.txt",
+  "url": "https://flelectionfiles.floridados.gov/enightfilespublic/20261103_ElecResultsFL_PipeDlm_Info.txt?v=52821560",
+  "downloaded": "2026-11-20T19:15:39-06:00",
+  "bytes": 68873,
+  "sha256": "7311ccd89e95411b07ebe3ca6ae17830dd6e34bca5a38136adc24ffe94bfc9fe",
+  "notes": "Pipe-delimited info file (races, candidates, units). Pass 2 source (with Votes file). curl -k as above."
+ },
+ {
+  "file": "raw/20261103_ElecResultsFL_PipeDlm_Votes.txt",
+  "url": "https://flelectionfiles.floridados.gov/enightfilespublic/20261103_ElecResultsFL_PipeDlm_Votes.txt?v=52821560",
+  "downloaded": "2026-11-20T19:15:35-06:00",
+  "bytes": 141307,
+  "sha256": "a8a8365475a472ff43a67a80ee7eac96a0289479b1140548ea2681668db52bd7",
+  "notes": "Pipe-delimited votes file. Pass 2 source for 2026 governor votes. All 670 governor records carry status \"I\" (Incomplete). curl -k as above."
+ },
+ {
+  "file": "raw/ResultsFileLayoutPipeDelimited.pdf",
+  "url": "https://flelectionfiles.floridados.gov/enightfilespublic/ResultsFileLayoutPipeDelimited.pdf?v=52821560",
+  "downloaded": "2026-11-20T19:16:06-06:00",
+  "bytes": 249019,
+  "sha256": "1d9359422347c65da59c915c558411a0b3f0a94c988a552d64a2b89b3f2e1814",
+  "notes": "Layout spec for the pipe files."
+ },
+ {
+  "file": "raw/bookclosing_2022gen_1_party_by_county.pdf",
+  "url": "https://files.floridados.gov/media/706001/1-by-party-by-county.pdf",
+  "downloaded": "2026-11-20T19:15:34-06:00",
+  "bytes": 100438,
+  "sha256": "a2a1e25a4cce642de71713b960b2aa9b337a6c48952b859657ff1610440e9886",
+  "notes": "2022 General book closing (Oct 11, 2022) active registered voters by party by county. Pass 1 source for 2022 registration. No Excel version located for 2022 (media ids 706000-706010 probed)."
+ },
+ {
+  "file": "raw/bookclosing_2022gen_3_party_by_county_by_race.pdf",
+  "url": "https://files.floridados.gov/media/706005/3-by-party-by-county-by-race.pdf",
+  "downloaded": "2026-11-20T19:15:52-06:00",
+  "bytes": 238035,
+  "sha256": "37fd26098fcca8848156f236062bce6641d418a95954bc67f2dfbd39a73ebf0f",
+  "notes": "2022 General book closing by party by race. Pass 2 source for 2022 registration (Dem section total; county total = sum of all party sections)."
+ },
+ {
+  "file": "raw/bookclosing_2026gen_1_party_by_county.pdf",
+  "url": "https://dos.fl.gov/media/711452/1-party-by-county.pdf",
+  "downloaded": "2026-11-20T19:16:00-06:00",
+  "bytes": 183595,
+  "sha256": "00e87ffee4e26e083ead52dbbcbd72fd59ff072326071062bcf684d31872d9e9",
+  "notes": "Same report as PDF. Pass 2 source for 2026 registration."
+ },
+ {
+  "file": "raw/bookclosing_2026gen_1_party_by_county.xlsx",
+  "url": "https://dos.fl.gov/media/711453/1-party-by-county.xlsx",
+  "downloaded": "2026-11-20T19:16:04-06:00",
+  "bytes": 40874,
+  "sha256": "4784f9f82e2074dbfde75403fcef1424302674add5195b7964176ad8961aac52",
+  "notes": "2026 General book closing (Oct 5, 2026) by party by county. Pass 1 source for 2026 registration."
+ },
+ {
+  "file": "raw/bookclosing_2026gen_3_party_by_county_by_race.xlsx",
+  "url": "https://dos.fl.gov/media/711457/3-party-by-county-by-race.xlsx",
+  "downloaded": "2026-11-20T19:15:51-06:00",
+  "bytes": 100472,
+  "sha256": "336fc66c2bcf282d091531a53b12ac65f329d8bef8ece7c872e38801b325503d",
+  "notes": "2026 by party by race (supplementary cross-check)."
+ },
+ {
+  "file": "raw/dos_bookclosing_page.html",
+  "url": "https://dos.fl.gov/elections/data-statistics/voter-registration-statistics/bookclosing/",
+  "downloaded": "2026-11-20T19:16:09-06:00",
+  "bytes": 55017,
+  "sha256": "d9270fcdbc0bd7008b3c56cb788c66757cf50f1bc4f33dd9d392f8d86499200c",
+  "notes": "Book closing index page (2026 only; 2022 files located via files.floridados.gov)."
+ },
+ {
+  "file": "raw/dos_voter_turnout_page.html",
+  "url": "https://dos.fl.gov/elections/data-statistics/elections-data/voter-turnout/",
+  "downloaded": "2026-11-20T19:16:03-06:00",
+  "bytes": 32259,
+  "sha256": "440dec73d5974730198e08bae873b9e29a07d902a37e7999436cd52c1d5dc6bd",
+  "notes": "Statewide historical turnout page."
+ },
+ {
+  "file": "raw/few_CountyReportingStatus.html",
+  "url": "https://floridaelectionwatch.gov/CountyReportingStatus",
+  "downloaded": "2026-11-20T19:15:51-06:00",
+  "bytes": 169710,
+  "sha256": "35413739f9ee1b6b78fefd9c4fa9ad6246f3efa0357a69c1198033d14a58fb6d",
+  "notes": "2026 County Reporting Status: Voter Turnout (ballots cast), Eligible Active Registered Voters, completion flags. 2026 ballots cast source (both passes, different parsers)."
+ },
+ {
+  "file": "raw/few_Downloads.html",
+  "url": "https://floridaelectionwatch.gov/Downloads",
+  "downloaded": "2026-11-20T19:15:52-06:00",
+  "bytes": 24007,
+  "sha256": "374e7172658a4b1d5aeebe34ae53a4a9c6bc0c0427050d148f62622c3561b747",
+  "notes": "Downloads page linking the 2026 results files."
+ },
+ {
+  "file": "raw/few_ElectionDayTurnout.html",
+  "url": "https://floridaelectionwatch.gov/ElectionDayTurnout",
+  "downloaded": "2026-11-20T19:16:15-06:00",
+  "bytes": 86002,
+  "sha256": "9d9b4cacb18ea23c12788e683e6cd515b60a37d36e869265151c36a52016fa80",
+  "notes": "Election-day-only turnout, election night (not used for metrics)."
+ },
+ {
+  "file": "raw/few_Timeline.html",
+  "url": "https://floridaelectionwatch.gov/Timeline",
+  "downloaded": "2026-11-20T19:16:00-06:00",
+  "bytes": 26459,
+  "sha256": "0085a24aa3b83232f0c596faf822f5e2ccb70cbe24f9426d6bd42e3dbd16a179",
+  "notes": "Certification timeline (official returns due Nov 16; Canvassing Commission Nov 17, 2026)."
+ },
+ {
+  "file": "raw/few_gov_by_county_2026.html",
+  "url": "https://floridaelectionwatch.gov/ContestResultsByCounty/160000",
+  "downloaded": "2026-11-20T19:15:37-06:00",
+  "bytes": 85508,
+  "sha256": "ae7093ec9d26581ecb36e728c9839779e9b6b9e8b0c8fa47eb7edd8ff66440fb",
+  "notes": "2026 Governor results by county (HTML), page header \"Official Election Results\". Cross-source check for 2026 governor votes; Total row."
+ },
+ {
+  "file": "raw/few_governor_statewide_2026.html",
+  "url": "https://floridaelectionwatch.gov/StateOffices/Governor",
+  "downloaded": "2026-11-20T19:15:37-06:00",
+  "bytes": 35414,
+  "sha256": "69364ba761dc08920b3c48b8986a5f393264688aa768d71135e19367477a808a",
+  "notes": "2026 Governor statewide totals (DOE-reported state total)."
+ },
+ {
+  "file": "raw/few_home.html",
+  "url": "https://floridaelectionwatch.gov/",
+  "downloaded": "2026-11-20T19:16:18-06:00",
+  "bytes": 23925,
+  "sha256": "996641edbd14d5dbb7e20070d877823640096a89b00623070dcc86a99ab4bb91",
+  "notes": "Election Watch home; header \"2026 General Election November 3, 2026 Official Election Results\"."
+ },
+ {
+  "file": "raw/few_trackcounty_ALA.html",
+  "url": "https://floridaelectionwatch.gov/TrackCounty/ALA",
+  "downloaded": "2026-11-20T19:15:37-06:00",
+  "bytes": 125744,
+  "sha256": "6c25d2d43d07e4c2b60ce7a1c338ce12205e3379d265efd4ab3b05544fdf0939",
+  "notes": "Alachua track page (contest ids)."
+ },
+ {
+  "file": "raw/fl_gov_detail_20221108.html",
+  "url": "https://results.elections.myflorida.com/DetailRpt.Asp?ELECTIONDATE=11/8/2022&RACE=GOV&PARTY=&DIST=&GRP=&DATAMODE=",
+  "downloaded": "2026-11-20T19:16:20-06:00",
+  "bytes": 20465,
+  "sha256": "d135b0fe8c7ce367fcc2d76443fe9290f59886a94cecf06c32edd4e073d22dbf",
+  "notes": "2022 Governor county detail report, \"Official Results\". Pass 2 source for 2022 governor votes; Total row = DOE statewide totals."
+ },
+ {
+  "file": "raw/fl_results_20221108_extract.txt",
+  "url": "POST https://results.elections.myflorida.com/ResultsExtract.Asp (ElectionDate=11/8/2022, OfficialResults=Y, PartyRaces=N)",
+  "downloaded": "2026-11-20T19:15:52-06:00",
+  "bytes": 404954,
+  "sha256": "38dc8a11148b4ac6b7c020299e44346df51892c1dc115e549b6697e488b6cd3a",
+  "notes": "2022 General, all races, county level, tab-delimited, OFFICIAL. Pass 1 source for 2022 governor votes."
+ },
+ {
+  "file": "raw/fl_turnout_20221108.html",
+  "url": "https://results.elections.myflorida.com/TurnoutRpt.asp?ElectionDate=11/8/2022&DATAMODE=",
+  "downloaded": "2026-11-20T19:15:35-06:00",
+  "bytes": 18629,
+  "sha256": "a7bfb88c5e6c3f2bc6d6c0cfc5b68917aaa4cfd0016285f832d9f9fb20b0c1dc",
+  "notes": "2022 General \"Voter Registration and Turnout\" by county, Official Results. Turnout = ballots cast (both passes, different parsers)."
+ },
+ {
+  "file": "raw/home_results.html",
+  "url": "https://results.elections.myflorida.com/",
+  "downloaded": "2026-11-20T19:15:29-06:00",
+  "bytes": 2043,
+  "sha256": "d99f120d3eb0e5073701f78c16c20c4caa97685e5bdb44c4635543bb9d4e8eaa",
+  "notes": "Results archive home (frameset). Election list (ElectionRaces.asp) shows no 2026 General entry; 11/3/2026 extract returned header only."
+ },
+ {
+  "file": "raw/results_11-8-2022.txt",
+  "url": "https://results.elections.myflorida.com/downloadresults.asp?ElectionDate=11/8/2022&DATAMODE=",
+  "downloaded": "2026-11-20T19:16:13-06:00",
+  "bytes": 9226,
+  "sha256": "85f1c41bc59705eba648733854172004c02e369d30c693fd792301b90aa9580b",
+  "notes": "Extract utility form page (HTML) showing field layout; not data."
+ },
+ {
+  "file": "raw/vr_archive_2022.zip",
+  "url": "https://dos.fl.gov/media/709149/2022-archived.zip",
+  "downloaded": "2026-11-20T19:16:02-06:00",
+  "bytes": 305801,
+  "sha256": "411d00366375bd77c61c9837fc2f583b1cf66cc37638474e61c189a857404580",
+  "notes": "2022 monthly registration archive (not book closing; not used for metrics)."
+ }
+]
