@@ -30,3 +30,21 @@ Download time = file write time on the box, America/Chicago (CST, UTC-6).
 | raw/home_results.html | https://results.elections.myflorida.com/ | 2026-11-20T19:15:29-06:00 | 2043 | `d99f120d3eb0e507…` | Results archive home (frameset). Election list (ElectionRaces.asp) shows no 2026 General entry; 11/3/2026 extract returned header only. |
 | raw/results_11-8-2022.txt | https://results.elections.myflorida.com/downloadresults.asp?ElectionDate=11/8/2022&DATAMODE= | 2026-11-20T19:16:13-06:00 | 9226 | `85f1c41bc59705eb…` | Extract utility form page (HTML) showing field layout; not data. |
 | raw/vr_archive_2022.zip | https://dos.fl.gov/media/709149/2022-archived.zip | 2026-11-20T19:16:02-06:00 | 305801 | `411d00366375bd77…` | 2022 monthly registration archive (not book closing; not used for metrics). |
+
+## Resources graphics (added Nov 22, 2026)
+
+| File | SHA-256 |
+|---|---|
+| graphics/flip/FL_Flip_01_Liberty.png | `803db5e8734e62b8f58cc010b2ce7cb1599139d819c09c3163f02ad65a23e054` |
+| graphics/flip/FL_Flip_02_Hendry.png | `8905f7272dad355a23337f8822f397075be49b87424e48b40b4eec8c4732f1db` |
+| graphics/flip/FL_Flip_03_Calhoun.png | `f38328b911ae1c754ab29f5990a65dada5b4bdd07c504c75acbb52ac9dba8ba4` |
+| graphics/flip/FL_Flip_04_Hardee.png | `99bf26d46a9e50eb723b82b43fbe49ce069816ebfeb07e673d0df5d6741ff67b` |
+| graphics/flip/FL_Flip_05_DeSoto.png | `dd362848b8f096a2d7587e167513bd8acfe6d2d4ffc9245e65321bd16d1bd826` |
+| graphics/flip/FL_Flip_06_Hamilton.png | `42b9a5382dd2c648a95b271417956096a4485f6bbcedf9fccf4183fc57745c90` |
+| graphics/flip/FL_Flip_07_Okeechobee.png | `46e544bfef94f2681af0624a28c982e261c8e18fc415a1732624b59424a7c59a` |
+| graphics/flip/FL_Flip_08_Glades.png | `209f94288ba13d0c47830028fd0ddd622907616432fd97f313bd21d1fb06b8de` |
+| graphics/flip/FL_Flip_09_Taylor.png | `dc5f5bb669ad831ba4b818a1bccd4b81d00c85a725acd16f481865965a11903d` |
+| graphics/flip/FL_Flip_10_Madison.png | `bed69a13cf1c50f44a253a6b693a8d8594c17cec367e4fbb8e2830e961928827` |
+| graphics/guarantee/FL_Guarantee_Clause_1080x1080.png | `b8488d3d13c23f256921df29ef74fa7a36be5f023a6e78df8cbdc02298dc0919` |
+| graphics/guarantee/FL_Guarantee_Clause_1600x900.png | `088926e8c69cbe080c207d836139e733e36c8c171cb17007ec98df31acea5bba` |
+| graphics/guarantee/X_post.txt | `1c8083d52ba8caece80191868d93e39921a9c2c9950c4e58dbf70f5011b20f11` |
