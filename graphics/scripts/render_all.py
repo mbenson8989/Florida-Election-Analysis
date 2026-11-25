@@ -43,7 +43,7 @@ def flip(d):
     for s in ["Surplus G = Dem governor votes ÷ ballots cast × 100 − Dem registration share. Flip ΔG = G2026 − G2022.",
               "Ranked by ΔG of 67 counties. Implied extra votes = (ΔG − registration-share drop) × 2026 ballots ÷ 100.",
               "Hypothesis analysis, not a finding of fraud. Computed from unrounded values; verified twice.",
-              "Source: Florida Division of Elections; 2026 certified Nov 17.",
+              "Source: Florida Division of Elections; *2026 unofficial.",
               "github.com/mbenson8989/Florida-Election-Analysis/wiki/Resources"]:
         assert dr.textlength(s,font=ff)<W-2*M+20, s
         dr.text((M,fy),s,font=ff,fill=GREY); fy+=30

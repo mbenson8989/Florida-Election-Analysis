@@ -1,5 +1,5 @@
 {
- "built": "2026-11-22T09:44:45-06:00",
+ "built": "2026-11-24T17:56:27-06:00",
  "n": 67,
  "constant": "8.48046671524653062651",
  "multiplier": "0.82003097835610893684",
@@ -137,6 +137,6 @@
    "n": 67
   }
  },
- "certification_2026": "Certified Nov 17, 2026 (Elections Canvassing Commission). Label per Morissa Benson decision (Nov 2026), based on Florida Election Watch \"Official Election Results\" label and news reports of the Nov 17 certification.",
+ "certification_2026": "*2026 figures are unofficial (Florida Election Watch county returns).",
  "delta_G_fit_note": "Descriptive only; not the locked formula. The locked formula is the surplus form S = m x (D/100) + b."
 }

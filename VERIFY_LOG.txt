@@ -31,3 +31,23 @@ RESULT: CLEAN
   PDF rows: table1 67, table2 67; CSV county rows 67; wiki Reverse-Math county rows 67; Locked rows 67
   checks 4832; mismatches 0
 
+
+=== Kansas-format rebuild, Nov 24, 2026 (America/Chicago) — local, not pushed ===
+pass A (floats) vs pass B (exact fractions/mpmath), kansas_match/verification/compare_report.json: checks 4508; mismatches 0
+VBM/early county sums equal DOS statewide rows: 2022 2,773,948 / 2,285,465; 2026 2,080,734 / 3,467,306
+rendered pages: all 8 wiki pages regenerated from pass B values are byte-identical to the pass A pages (6365 numeric tokens); 0 differences
+rendered county cells vs data/florida_governor_2022_2026_by_county.csv (earlier audit pipeline): checks 871; mismatches 0
+SOE letters: county figures vs audit CSV: 67 letters, checks 1072; mismatches 0
+quotations in AG + 67 SOE letters vs official text: 161 checked; 0 not found
+wiki links/anchors/raw file targets: 198 checked; 0 broken
+
+=== Kansas-format rebuild + unofficial relabel, Nov 24, 2026 (America/Chicago) ===
+2026 label switched to unofficial (STATUS26='unofficial' in kansas_match/scripts/km_config.py) per Morissa Benson approval (t13u). Pages, sidebar, letters, CSV header, PDF, charts, flip graphics, tracker, and README relabeled. Voting-system "certified" wording left in place.
+pass A (floats) vs pass B (exact fractions/mpmath), kansas_match/verification/compare_report.json: checks 4508; mismatches 0
+VBM/early county sums equal DOS statewide rows: 2022 2,773,948 / 2,285,465; 2026 2,080,734 / 3,467,306; no negative Election Day values
+rendered pages: all 9 wiki pages regenerated from pass B values are byte-identical to the pass A pages; 0 differences
+rendered county cells vs data/florida_governor_2022_2026_by_county.csv: checks 871; mismatches 0
+SOE letters: county figures vs audit CSV: 67 letters, checks 1072; mismatches 0
+quotations in AG + 67 SOE letters vs official text: 68 files, 161 quotes; 0 not found
+flip-card rendered values vs audit CSV: checks 160; mismatches 0
+wiki links/anchors/raw file targets: 198 checked; 0 broken

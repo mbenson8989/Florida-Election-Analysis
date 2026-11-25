@@ -102,14 +102,14 @@ for m_ in man:
 for f_ in ['pdf/Florida_67_County_Democratic_Registration_and_Vote_Change.pdf','data/florida_governor_2022_2026_by_county.csv']:
     h=hashlib.sha256(open('/workspace/florida/'+f_,'rb').read()).hexdigest(); eq(f'README hash {f_}',f"| `{f_}` | `{h}` |" in rr,True)
 eq('README raw file count',len(man),len([x for x in os.listdir('/workspace/florida/raw')]))
-for need in ['https://moebenson.substack.com/p/the-burden-just-flipped','dos.fl.gov','results.elections.myflorida.com','floridaelectionwatch.gov','USB batch-acceptance overrides','absentee batch chain-of-custody gap','Ghost voters fed with real voter data','Cloud-layer number swaps','sha256sum','certified (Nov 17, 2026)']:
+for need in ['https://moebenson.substack.com/p/the-burden-just-flipped','dos.fl.gov','results.elections.myflorida.com','floridaelectionwatch.gov','USB batch-acceptance overrides','absentee batch chain-of-custody gap','Ghost voters fed with real voter data','Cloud-layer number swaps','sha256sum','UNOFFICIAL']:
     eq(f'README contains {need}',need in rr,True)
-# every wiki page: certified, never unofficial; sidebar order; Cedar link
+# every wiki page: unofficial 2026 label; sidebar order; Cedar link
 for f in sorted(os.listdir('/workspace/florida/wiki')):
     s_=open('/workspace/florida/wiki/'+f).read()
-    eq(f'certified marker in {f}','certified' in s_.lower(),True)
+    eq(f'unofficial marker in {f}','unofficial' in s_.lower(),True)
 # grep for retired strings across every published text file except raw/
-bad=['unofficial','cedar-county-election-analysis','back-room','backroom','back room','who-holds-the-keys','who holds the keys']
+bad=['cedar-county-election-analysis','back-room','backroom','back room','who-holds-the-keys','who holds the keys']
 for root,_,fs in os.walk('/workspace/florida'):
     if '/raw' in root or '/.git' in root: continue
     for fn in fs:
@@ -117,10 +117,10 @@ for root,_,fs in os.walk('/workspace/florida'):
         t=open(os.path.join(root,fn),errors='ignore').read().lower()
         for b_ in bad: eq(f'no "{b_}" in {os.path.relpath(os.path.join(root,fn),"/workspace/florida")}',b_ in t,False)
 pdftxt=''.join(pg.extract_text() or '' for pg in pdfplumber.open('/workspace/florida/pdf/Florida_67_County_Democratic_Registration_and_Vote_Change.pdf').pages).lower()
-eq('PDF no unofficial','unofficial' in pdftxt,False); eq('PDF certified','certified' in pdftxt,True)
+eq('PDF unofficial','unofficial' in pdftxt,True); eq('PDF not certified-results label','certified nov 17' not in pdftxt,True)
 sb=open('/workspace/florida/wiki/_Sidebar.md').read()
 order=[m.group(1) for m in re.finditer(r'^\d+\. \[([^\]]+)\]',sb,flags=re.M)]
-eq('Sidebar order',order,['Home','README: start here','Cedar County Audit (Nebraska)','Floor and Ceiling','Reverse Math','Graphs','Florida County PDF Information','Locked Florida Formula'])
+eq('Sidebar order',order,['Home','Cedar County Audit (Nebraska)','Floor and Ceiling Counties','Bottom-Up Reverse Math','Locked Florida Formula','Graphs','Florida County PDF Information','Resources'])
 CED='https://github.com/mbenson8989/Nebraska-Election-Analysis-/wiki/Cedar-Audit'
 eq('Cedar link sidebar',CED in sb,True); eq('Cedar link home',CED in open('/workspace/florida/wiki/Home.md').read(),True); eq('Cedar link README',CED in rr,True)
 eq('PDF link sidebar','https://raw.githubusercontent.com/mbenson8989/Florida-Election-Analysis/main/pdf/Florida_67_County_Democratic_Registration_and_Vote_Change.pdf' in sb,True)

@@ -74,7 +74,7 @@ def csvrow(r):
             *( [full(r['sfit_pred22']),full(r['sfit_res22']),full(r['sfit_pred26']),full(r['sfit_res26'])] if 'sfit_pred22' in r else ['','','','']),
             full(r['DR_over_ballots22']),full(r['DR_over_ballots26']),full(r['gov_over_ballots22']),full(r['gov_over_ballots26'])]
 with open(f'{BASE}/data/florida_governor_2022_2026_by_county.csv','w',newline='') as fh:
-    w=csv.writer(fh); w.writerow(['# Florida Governor 2022 (official) vs 2026 (certified Nov 17, 2026 by the Elections Canvassing Commission; label per Morissa Benson decision, based on Florida Election Watch "Official Election Results" label and news reports of the Nov 17 certification). Sorted by 2026 Democratic registration share, descending. Values at 20 decimal places, computed from exact rationals; pass 1 and pass 2 match exactly.'])
+    w=csv.writer(fh); w.writerow(['# Florida Governor 2022 (official) vs 2026* (unofficial; Florida Division of Elections Florida Election Watch county returns). Sorted by 2026 Democratic registration share, descending. Values at 20 decimal places, computed from exact rationals; pass 1 and pass 2 match exactly.'])
     w.writerow(cols)
     for r in by_reg26: w.writerow(csvrow(r))
     sr=dict(county='STATEWIDE',R22=st['R22'],R26=st['R26'],demreg22=S['demreg22'],demreg26=S['demreg26'],demreg_chg=st['demreg_chg'],demreg_chg_pct=st['demreg_chg_pct'],
@@ -101,7 +101,7 @@ for y in ['22','26']:
                ci_multiplier=[float(d['multiplier'])-tc*se_m_,float(d['multiplier'])+tc*se_m_],t=tt,p_value=pv,resid_sd=math.sqrt(s2),t_crit=tc,
                max_resid_county=mx_['county'],max_resid=full(mx_['sfit_res'+y]),n=n)
 summary['surplus_fit']=SFS
-summary['certification_2026']='Certified Nov 17, 2026 (Elections Canvassing Commission). Label per Morissa Benson decision (Nov 2026), based on Florida Election Watch "Official Election Results" label and news reports of the Nov 17 certification.'
+summary['certification_2026']='*2026 figures are unofficial (Florida Election Watch county returns).'
 summary['delta_G_fit_note']='Descriptive only; not the locked formula. The locked formula is the surplus form S = m x (D/100) + b.'
 json.dump(summary,open(f'{BASE}/data/summary.json','w'),indent=1)
 # ---------------- Charts ----------------
@@ -114,27 +114,27 @@ xx=[0,max(float(r['drop']) for r in rows)+0.5]; ax.plot(xx,[float(c+m*F(x)) for 
 for r in rows:
     if r['county'] in cn|fn or abs(r['fit_resid'])>3 or r['ballots26']>500000: ax.annotate(f"{r['county']} {sg(r['dG'])}",(float(r['drop']),float(r['dG'])),fontsize=7.5,xytext=(4,3),textcoords='offset points')
 ax.set_xlim(-0.3,max(xs)+2.2); ax.set_xlabel('Democratic registration-share drop, 2022 → 2026 (points)'); ax.set_ylabel('ΔG = G 2026 − G 2022 (points)')
-ax.set_title('Florida governor: ΔG vs registration-share drop, 67 counties (descriptive)\n2026 certified Nov 17, 2026. Orange = ceiling (5 highest ΔG), green = floor (5 lowest ΔG); dot size ∝ 2026 ballots',fontsize=10.5)
+ax.set_title('Florida governor: ΔG vs registration-share drop, 67 counties (descriptive)\n*2026 unofficial. Orange = ceiling (5 highest ΔG), green = floor (5 lowest ΔG); dot size ∝ 2026 ballots',fontsize=10.5)
 ax.legend(loc='upper left'); ax.grid(alpha=.3); fig.tight_layout(); fig.savefig(f'{BASE}/charts/FL_DeltaG_vs_Registration_Drop_Fit.png',dpi=150); plt.close(fig)
 fig,ax=plt.subplots(figsize=(11,13)); srt=by_dG
 ax.barh(range(n),[float(r['dG']) for r in srt],color=[col(r) for r in srt]); ax.set_yticks(range(n)); ax.set_yticklabels([r['county'] for r in srt],fontsize=7.5)
 for i,r in enumerate(srt): ax.text(float(r['dG'])+0.15,i,sg(r['dG']),va='center',fontsize=6.5)
 ax.axvline(float(median),color='r',ls='--',lw=1,label=f'County median {sg(median)}'); ax.axvline(float(st['dG']),color='k',ls=':',lw=1,label=f'Statewide pooled {sg(st["dG"])}')
-ax.set_xlabel('ΔG (points); 2026 certified Nov 17, 2026'); ax.set_title('Florida governor ΔG by county, lowest to highest (2026 certified Nov 17, 2026)\nOrange = ceiling (5 highest), green = floor (5 lowest)',fontsize=10.5); ax.legend(loc='lower right'); ax.grid(axis='x',alpha=.3)
+ax.set_xlabel('ΔG (points); *2026 unofficial'); ax.set_title('Florida governor ΔG by county, lowest to highest (*2026 unofficial)\nOrange = ceiling (5 highest), green = floor (5 lowest)',fontsize=10.5); ax.legend(loc='lower right'); ax.grid(axis='x',alpha=.3)
 fig.tight_layout(); fig.savefig(f'{BASE}/charts/FL_DeltaG_by_County.png',dpi=150); plt.close(fig)
 fig,ax=plt.subplots(figsize=(8,11))
 for r in rows: ax.plot([0,1],[float(r['G22']),float(r['G26'])],color=col(r),alpha=.8 if r['county'] in cn|fn else .35,lw=1.6 if r['county'] in cn|fn else .8)
 for r in ceiling+floorG: ax.text(1.02,float(r['G26']),f"{r['county']} ({sg(r['dG'])})",fontsize=7,va='center')
 ax.set_xticks([0,1]); ax.set_xticklabels(['G 2022','G 2026']); ax.set_xlim(-.1,1.45); ax.set_ylabel('G = Dem share of ballots − Dem registration share (points)')
-ax.set_title(f'Florida county slope chart, G 2022 → G 2026 (2026 certified Nov 17, 2026)\nG rose in {sum(r["dG"]>0 for r in rows)} of 67 counties',fontsize=10.5); ax.grid(alpha=.3); fig.tight_layout(); fig.savefig(f'{BASE}/charts/FL_Slope_G2022_to_G2026.png',dpi=150); plt.close(fig)
+ax.set_title(f'Florida county slope chart, G 2022 → G 2026 (*2026 unofficial)\nG rose in {sum(r["dG"]>0 for r in rows)} of 67 counties',fontsize=10.5); ax.grid(alpha=.3); fig.tight_layout(); fig.savefig(f'{BASE}/charts/FL_Slope_G2022_to_G2026.png',dpi=150); plt.close(fig)
 fig,ax=plt.subplots(figsize=(13,6)); srt=by_size; x=range(n)
 ax.bar([i-.2 for i in x],[float(r['DR_over_ballots22'])*100 for r in srt],.4,label='2022',color='#8aa9c9'); ax.bar([i+.2 for i in x],[float(r['DR_over_ballots26'])*100 for r in srt],.4,label='2026',color=FL)
 ax.axhline(100,color='r',lw=1.2,label='100% = ballots cast'); ax.set_ylim(90,101); ax.set_xticks(list(x)); ax.set_xticklabels([r['county'] for r in srt],rotation=90,fontsize=6.5)
-ax.set_ylabel('(Dem + Rep governor votes) ÷ ballots cast, %'); ax.set_title('Texas-style over-ballot check, all 67 counties by 2026 ballots (largest first). No county reaches 100% (2026 certified Nov 17, 2026)',fontsize=10)
+ax.set_ylabel('(Dem + Rep governor votes) ÷ ballots cast, %'); ax.set_title('Texas-style over-ballot check, all 67 counties by 2026 ballots (largest first). No county reaches 100% (*2026 unofficial)',fontsize=10)
 ax.legend(); fig.tight_layout(); fig.savefig(f'{BASE}/charts/FL_Over_Ballot_Check.png',dpi=150); plt.close(fig)
 fig,ax=plt.subplots(figsize=(13,6)); srt=by_size
 ax.bar(range(n),[float(r['resid_regloss']) for r in srt],color=[col(r) for r in srt]); ax.set_xticks(range(n)); ax.set_xticklabels([r['county'] for r in srt],rotation=90,fontsize=6.5)
-ax.set_ylabel('Residual = ΔG − registration-share drop (points)'); ax.set_title('Residual after the registration-loss step, all 67 counties (all lost registered Democrats), by 2026 ballots (2026 certified Nov 17, 2026)',fontsize=10); ax.grid(axis='y',alpha=.3)
+ax.set_ylabel('Residual = ΔG − registration-share drop (points)'); ax.set_title('Residual after the registration-loss step, all 67 counties (all lost registered Democrats), by 2026 ballots (*2026 unofficial)',fontsize=10); ax.grid(axis='y',alpha=.3)
 fig.tight_layout(); fig.savefig(f'{BASE}/charts/FL_Residual_Bars_by_Ballots.png',dpi=150); plt.close(fig)
 for y,yy in [('22','2022'),('26','2026')]:
     d=SF[y]; fig,ax=plt.subplots(figsize=(11,7.5))
@@ -144,13 +144,13 @@ for y,yy in [('22','2022'),('26','2026')]:
     for r in sorted(rows,key=lambda r:-abs(r['sfit_res'+y]))[:8]+sorted(rows,key=lambda r:-r['ballots'+y])[:4]:
         ax.annotate(f"{r['county']} {sg(r['sfit_res'+y])}",(float(r['R'+y]),float(r['G'+y])),fontsize=7.5,xytext=(4,3),textcoords='offset points')
     ax.axhline(0,color='grey',lw=.8); ax.set_xlabel(f'D = Democratic registration share {yy} (%)'); ax.set_ylabel(f'S = surplus {yy} = Dem share of ballots − D (points)')
-    ax.set_title(f"Florida surplus form, {yy}: S vs D, 67 counties, OLS fit (Florida data only)" + ("\n2026 certified Nov 17, 2026" if y=='26' else "\n2022 official")+"; labels show residual (actual − fitted S); dot size ∝ ballots",fontsize=10.5)
+    ax.set_title(f"Florida surplus form, {yy}: S vs D, 67 counties, OLS fit (Florida data only)" + ("\n*2026 unofficial" if y=='26' else "\n2022 official")+"; labels show residual (actual − fitted S); dot size ∝ ballots",fontsize=10.5)
     ax.legend(loc='upper left'); ax.grid(alpha=.3); fig.tight_layout(); fig.savefig(f'{BASE}/charts/FL_Surplus_S_vs_D_{yy}.png',dpi=150); plt.close(fig)
     fig,ax=plt.subplots(figsize=(11,13)); srt=sorted(rows,key=lambda r:r['sfit_res'+y])
     ax.barh(range(n),[float(r['sfit_res'+y]) for r in srt],color=[OR if r['sfit_res'+y]>0 else GR for r in srt]); ax.set_yticks(range(n)); ax.set_yticklabels([r['county'] for r in srt],fontsize=7.5)
     for i,r in enumerate(srt): ax.text(float(r['sfit_res'+y])+(0.2 if r['sfit_res'+y]>=0 else -0.2),i,sg(r['sfit_res'+y]),va='center',ha='left' if r['sfit_res'+y]>=0 else 'right',fontsize=6.5)
     ax.axvline(0,color='k',lw=.8); ax.set_xlabel('Residual = actual S − fitted S (points)')
-    ax.set_title(f"Florida surplus-form residuals, {yy} (S = {rnd(d['multiplier'],2)} × (D/100) {'+' if d['offset']>=0 else '−'} {abs(rnd(d['offset'],2))}); mean |residual| {rnd(d['mean_abs_resid'],2)} pts" + ("\n2026 certified Nov 17, 2026" if y=='26' else "\n2022 official"),fontsize=10.5)
+    ax.set_title(f"Florida surplus-form residuals, {yy} (S = {rnd(d['multiplier'],2)} × (D/100) {'+' if d['offset']>=0 else '−'} {abs(rnd(d['offset'],2))}); mean |residual| {rnd(d['mean_abs_resid'],2)} pts" + ("\n*2026 unofficial" if y=='26' else "\n2022 official"),fontsize=10.5)
     ax.grid(axis='x',alpha=.3); fig.tight_layout(); fig.savefig(f'{BASE}/charts/FL_Surplus_Residuals_{yy}.png',dpi=150); plt.close(fig)
 json.dump(dict(built=BUILT),open(f'{BASE}/data/build_meta.json','w'))
 import pickle; pickle.dump(dict(SF=SF,SFS=SFS,C=C,st=st,S=S,FIT=FIT,se_c=se_c,se_m=se_m,resid_sd=resid_sd,t975=t975,BUILT=BUILT,median=median,mean=mean,imp_total=imp_total,imp_fit_total=imp_fit_total,imp_fit_pos=imp_fit_pos,STATE_ROW=STATE_ROW),open(f'{BASE}/data/build_state.pkl','wb'))

@@ -22,7 +22,7 @@ by_size=sorted(rows,key=lambda r:(-r['ballots26'],r['county'])); floor_base=sort
 fr=sorted(rows,key=lambda r:r['fit_resid']); median=B['median']; mean=B['mean']
 imp_total=B['imp_total']; imp_fit_total=B['imp_fit_total']; imp_fit_pos=B['imp_fit_pos']
 se_c,se_m,t=B['se_c'],B['se_m'],B['t975']
-BANNER=("> **2026 figures are certified (Nov 17, 2026).** The Florida Elections Canvassing Commission certified the Nov 3, 2026 general election on Nov 17, 2026. This label follows Morissa Benson's decision, based on the Florida Division of Elections' Election Watch site labeling the county returns \"Official Election Results\" and news reports of the Nov 17 certification. 2022 figures are DOS official results.\n>\n"
+BANNER=("> **\*2026 figures are UNOFFICIAL.** They are the Florida Division of Elections (DOS) Florida Election Watch county returns for the Nov 3, 2026 general election. 2022 figures are DOS official results.\n>\n"
         "> **Race: Governor.** 2022: Charlie Crist (D) vs. Ron DeSantis (R); 2026: David Jolly (D) vs. Byron Donalds (R). Votes are votes for the Democratic governor ticket, not a count of registered Democrats who voted. Registration is the DOS book-closing count of active registered voters by party (Oct 11, 2022; Oct 5, 2026). Ballots cast are the DOS county voter-turnout figures. These pages measure a pattern; they make no claim about intent, fraud or cause.\n")
 NAV=[('Home','Home'),('README','README'),('Floor and Ceiling','Floor-and-Ceiling'),('Reverse Math','Reverse-Math'),('Graphs','Graphs'),('Florida County PDF Information','Florida-County-PDF-Information'),('Locked Florida Formula','Locked-Florida-Formula')]
 def rel(skip):
@@ -31,7 +31,7 @@ pages={}
 # ---------- Sidebar
 pages['_Sidebar.md']=f"""**Florida Election Analysis**
 
-Governor 2022 vs 2026. 2026 figures certified Nov 17, 2026.
+Governor 2022 vs 2026. *2026 figures are unofficial.
 
 1. [Home]({WIKI}/Home)
 2. [README: start here]({WIKI}/README)
@@ -66,7 +66,7 @@ Method developed by Morissa Benson. It began with the **[Cedar County Audit]({CE
 
 ## Statewide at a glance
 
-| Measure | 2022 (official) | 2026 (certified) | Change |
+| Measure | 2022 (official) | 2026* (unofficial) | Change |
 |---|---|---|---|
 | Democratic registration (DOS book closing) | {ci(S['demreg22'])} | {ci(S['demreg26'])} | {sci(st['demreg_chg'])} ({sg(st['demreg_chg_pct'])}%) |
 | Total active registration | {ci(S['totreg22'])} | {ci(S['totreg26'])} | {sci(st['totreg_chg'])} ({sg(st['totreg_chg_pct'])}%) |
@@ -96,14 +96,14 @@ Every figure for all 67 counties was computed in **two independent passes** from
 
 - **A residual is not evidence of altered votes.** Candidate choice, crossover voting by Republicans and NPA voters, turnout differences, and registration-list maintenance all move these numbers. The arithmetic cannot separate them.
 - **Total active registration also fell** ({sci(st['totreg_chg'])} statewide; lower in {sum(1 for r in rows if r['totreg_chg']<0)} of 67 counties) between the two book closings, so registration changes partly reflect voter-list maintenance, not only voters leaving the party.
-- **2026 is certified.** 2026 figures follow the Nov 17, 2026 certification (see the note at the top). If DOS later posts corrected returns, the pipeline in the repository rebuilds every number.
+- **2026 is unofficial.** 2026 figures are the Florida Election Watch county returns (see the note at the top). If DOS posts corrected or certified returns, the pipeline in the repository rebuilds every number.
 
 ## Sources
 
 | Data | Source |
 |---|---|
 | 2022 governor results by county (official) | DOS results.elections.myflorida.com: ResultsExtract (tab) and DetailRpt (Governor), Nov 8, 2022 General |
-| 2026 governor results by county (certified Nov 17, 2026) | DOS Florida Election Watch downloads: 20261103_ElecResultsFL.txt and pipe-delimited Info/Votes files; ContestResultsByCounty/160000 |
+| 2026 governor results by county (unofficial*) | DOS Florida Election Watch downloads: 20261103_ElecResultsFL.txt and pipe-delimited Info/Votes files; ContestResultsByCounty/160000 |
 | 2022 ballots cast | DOS TurnoutRpt, Nov 8, 2022 General (official) |
 | 2026 ballots cast | DOS Florida Election Watch County Reporting Status, "Voter Turnout" |
 | 2022 registration by party | DOS book closing Oct 11, 2022: party by county (PDF) and party by county by race (PDF) |
@@ -190,7 +190,7 @@ Each state fits its own multiplier and offset by graphing that state's counties.
 | Year | Counties | Equation | Multiplier m (SE) | 95% CI for m | p-value for m | Offset b (SE) | R² | Mean absolute residual (pts) | Residual SD (pts) | Largest residual |
 |---|---|---|---|---|---|---|---|---|---|---|
 {sfrow('22','2022 (official)')}
-{sfrow('26','2026 (certified)')}
+{sfrow('26','2026* (unofficial)')}
 
 Exact values (from exact fractions of the raw counts): 2022 m = {p(s22['multiplier'],15)}, b = {p(s22['offset'],15)}, R² = {p(s22['R2'],15)}; 2026 m = {p(s26['multiplier'],15)}, b = {p(s26['offset'],15)}, R² = {p(s26['R2'],15)}.
 
@@ -302,7 +302,7 @@ Any county where governor votes exceed total ballots cast (DOS county turnout).
 | Year | Counties checked | Dem votes > ballots | Dem + Rep > ballots | All governor votes > ballots | Highest (D + R) ÷ ballots | Highest all governor votes ÷ ballots | Highest Dem ÷ ballots |
 |---|---|---|---|---|---|---|---|
 | 2022 (official) | 67 | **{o22[0]}** | **{o22[1]}** | **{o22[2]}** | {o22[3]} | {o22[4]} | {o22[5]} |
-| 2026 (certified) | 67 | **{o26[0]}** | **{o26[1]}** | **{o26[2]}** | {o26[3]} | {o26[4]} | {o26[5]} |
+| 2026* (unofficial) | 67 | **{o26[0]}** | **{o26[1]}** | **{o26[2]}** | {o26[3]} | {o26[4]} | {o26[5]} |
 
 **No over-ballot anomalies in either year.** Highest five (D + R) ÷ ballots in 2026:
 
@@ -423,7 +423,7 @@ Every number in the PDF was re-checked against the Pass 2 values (re-parsed from
 
 ## Sources
 
-DOS results.elections.myflorida.com (2022 official), DOS Florida Election Watch and its download files (2026, certified Nov 17, 2026), DOS book-closing registration reports for each general election. Full list: [MANIFEST.md]({REPO}/blob/main/MANIFEST.md).
+DOS results.elections.myflorida.com (2022 official), DOS Florida Election Watch and its download files (2026*, unofficial), DOS book-closing registration reports for each general election. Full list: [MANIFEST.md]({REPO}/blob/main/MANIFEST.md).
 {rel('Florida-County-PDF-Information')}"""
 # ---------- README (plain-language guide; also written as repo README.md)
 import hashlib, os as _os
@@ -436,7 +436,7 @@ README=f"""# Florida Election Analysis: a plain-language guide
 
 **Start here if this is your first time.** This page explains, without the math, what this project is, where every number came from, and how to check it yourself.
 
-> **2026 figures are certified (Nov 17, 2026).** The Florida Elections Canvassing Commission certified the Nov 3, 2026 general election on Nov 17, 2026. This label follows Morissa Benson's decision, based on the Florida Division of Elections' Election Watch site labeling the county returns "Official Election Results" and news reports of the certification. 2022 figures are the state's official results.
+> **\*2026 figures are UNOFFICIAL.** They are the Florida Division of Elections (DOS) Florida Election Watch county returns for the Nov 3, 2026 general election. 2022 figures are the state's official results.
 
 ## What is this?
 
@@ -454,7 +454,7 @@ It is part of a state-by-state series that uses the same method, which Morissa B
 
 - **dos.fl.gov**: the book-closing reports showing how many active registered voters each party had in each county (Oct 11, 2022 and Oct 5, 2026)
 - **results.elections.myflorida.com**: the official 2022 governor results and 2022 ballots cast, county by county
-- **floridaelectionwatch.gov**: the 2026 governor results and 2026 ballots cast, county by county (certified Nov 17, 2026)
+- **floridaelectionwatch.gov**: the 2026 governor results and 2026 ballots cast, county by county (*2026 unofficial)
 
 Nothing was estimated, and no other source was mixed in.
 

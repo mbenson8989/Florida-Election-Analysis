@@ -2,7 +2,7 @@
 
 **Start here if this is your first time.** This page explains, without the math, what this project is, where every number came from, and how to check it yourself.
 
-> **2026 figures are certified (Nov 17, 2026).** The Florida Elections Canvassing Commission certified the Nov 3, 2026 general election on Nov 17, 2026. This label follows Morissa Benson's decision, based on the Florida Division of Elections' Election Watch site labeling the county returns "Official Election Results" and news reports of the certification. 2022 figures are the state's official results.
+> **\*2026 figures are UNOFFICIAL.** They are the Florida Division of Elections (DOS) Florida Election Watch county returns for the Nov 3, 2026 general election. 2022 figures are DOS official results. Governor race only. Denominator: ballots cast (DOS county turnout) in both years. Registration: DOS book-closing active registered voters by party (Oct 11, 2022; Oct 5, 2026). Population (sort order only): U.S. Census Bureau Vintage 2025. These pages measure a pattern; they make no claim about intent, fraud or cause.
 
 ## What is this?
 
@@ -20,7 +20,7 @@ It is part of a state-by-state series that uses the same method, which Morissa B
 
 - **dos.fl.gov**: the book-closing reports showing how many active registered voters each party had in each county (Oct 11, 2022 and Oct 5, 2026)
 - **results.elections.myflorida.com**: the official 2022 governor results and 2022 ballots cast, county by county
-- **floridaelectionwatch.gov**: the 2026 governor results and 2026 ballots cast, county by county (certified Nov 17, 2026)
+- **floridaelectionwatch.gov**: the 2026 governor results and 2026 ballots cast, county by county (*2026 unofficial)
 
 Nothing was estimated, and no other source was mixed in.
 

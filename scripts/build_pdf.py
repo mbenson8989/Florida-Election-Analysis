@@ -19,8 +19,8 @@ rows=sorted(C.values(),key=lambda r:(-r['R26'],r['county']))
 SR=B['STATE_ROW']
 ss=getSampleStyleSheet(); small=ParagraphStyle('s',parent=ss['Normal'],fontSize=7.5,leading=9.5)
 title=ParagraphStyle('t',parent=ss['Title'],fontSize=13,leading=16)
-NOTE=("<b>2026 figures: certified Nov 17, 2026</b> by the Elections Canvassing Commission (label per Morissa Benson's decision, based on the Florida Election Watch "
-      "'Official Election Results' label and news reports of the Nov 17 certification). 2022 figures are DOS official results. Governor race: Crist (D) 2022, Jolly (D) 2026. "
+NOTE=("<b>*2026 figures are unofficial.</b> They are the Florida Division of Elections (DOS) Florida Election Watch county returns for the Nov 3, 2026 general election. "
+      "2022 figures are DOS official results. Governor race: Crist (D) 2022, Jolly (D) 2026. "
       "Registration = DOS book-closing active registered voters (Oct 11, 2022; Oct 5, 2026). Ballots cast = DOS county voter turnout. "
       "Sorted by 2026 Democratic share of registration, highest first; statewide total in the last row. Percents and point changes rounded half-up to 2 decimals from exact values; "
       "change % = change ÷ 2022 value. Full-precision values are in the CSV.")
@@ -38,14 +38,14 @@ def mk(h,data,cw):
         if i%2==0: sty.append(('BACKGROUND',(0,i),(-1,i),colors.HexColor('#f3f6fa')))
     t.setStyle(TableStyle(sty)); return t
 def onpage(cv,doc):
-    cv.saveState(); cv.setFont('Helvetica',7); cv.drawString(0.4*inch,0.3*inch,f'Florida 67-County Democratic Registration and Governor Vote Change, 2022 vs 2026   |   2026 certified Nov 17, 2026   |   Built {BUILT}   |   Page {doc.page}'); cv.restoreState()
+    cv.saveState(); cv.setFont('Helvetica',7); cv.drawString(0.4*inch,0.3*inch,f'Florida 67-County Democratic Registration and Governor Vote Change, 2022 vs 2026   |   *2026 unofficial   |   Built {BUILT}   |   Page {doc.page}'); cv.restoreState()
 doc=SimpleDocTemplate('/workspace/florida/pdf/Florida_67_County_Democratic_Registration_and_Vote_Change.pdf',pagesize=landscape(letter),leftMargin=0.35*inch,rightMargin=0.35*inch,topMargin=0.4*inch,bottomMargin=0.45*inch,
-    title='Florida 67-County Democratic Registration and Governor Vote Change, 2022 vs 2026 (2026 certified Nov 17, 2026)',author='Morissa Benson method; prepared for review')
-el=[Paragraph('Florida 67 Counties: Democratic Registration, Governor Votes and Ballots Cast, 2022 vs 2026 (2026 certified Nov 17, 2026)',title),Paragraph(NOTE,small),Spacer(1,4),
+    title='Florida 67-County Democratic Registration and Governor Vote Change, 2022 vs 2026 (*2026 unofficial)',author='Morissa Benson method; prepared for review')
+el=[Paragraph('Florida 67 Counties: Democratic Registration, Governor Votes and Ballots Cast, 2022 vs 2026 (*2026 unofficial)',title),Paragraph(NOTE,small),Spacer(1,4),
     Paragraph('<b>Table 1.</b> Democratic registration, Democratic governor votes and total ballots cast, raw numbers and percent change.',small),Spacer(1,3)]
 cw1=[0.95*inch]+[0.48*inch]*2+[0.66*inch]*2+[0.6*inch,0.5*inch]+[0.66*inch]*2+[0.6*inch,0.5*inch]+[0.66*inch]*2+[0.6*inch,0.5*inch]
 el.append(mk(h1,[t1(r) for r in rows]+[t1(SR2)],cw1)); el.append(PageBreak())
-el+= [Paragraph('<b>Table 2.</b> Shares and the gap G = Democratic share of ballots cast − Democratic share of registration (points); ΔG = G 2026 − G 2022 (descriptive). Same sort order. 2026 certified Nov 17, 2026.',small),Spacer(1,3)]
+el+= [Paragraph('<b>Table 2.</b> Shares and the gap G = Democratic share of ballots cast − Democratic share of registration (points); ΔG = G 2026 − G 2022 (descriptive). Same sort order. *2026 unofficial.',small),Spacer(1,3)]
 cw2=[1.0*inch]+[0.82*inch]*2+[0.62*inch]+[0.75*inch]*2+[0.6*inch]+[0.62*inch]*3+[0.8*inch]*2
 el.append(mk(h2,[t2(r) for r in rows]+[t2(SR2)],cw2))
 doc.build(el,onFirstPage=onpage,onLaterPages=onpage)
